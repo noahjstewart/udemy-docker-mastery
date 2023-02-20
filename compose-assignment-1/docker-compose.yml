@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:14.3
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=drupal
+      - POSTGRES_USER=drupal
+    volumes:
+      - drupal:/var/lib/postgresql/data
+
+  drupal:
+    image: drupal:9.3.13
+    ports:
+      - 8080:80
+
+volumes:
+  drupal:
